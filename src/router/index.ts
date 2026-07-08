@@ -42,22 +42,6 @@ const routes: Array<RouteRecordRaw> = [
           title: '区域分布'
         }
       },
-      {
-        path: '/product',
-        name: 'product',
-        component: () => import('../views/Reports/Product.vue'),
-        meta: {
-          title: '产品页'
-        }
-      },
-      {
-        path: '/weeklyreport',
-        name: 'weeklyReport',
-        component: () => import('../views/Reports/WeeklyReport.vue'),
-        meta: {
-          title: '周报'
-        }
-      },
     ]
   },
 ]

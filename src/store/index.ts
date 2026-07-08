@@ -23,16 +23,6 @@ export default createStore({
         path: '/district',
         icon: 'Location'
       },
-      // {
-      //   title: '产品页',
-      //   path: '/product',
-      //   icon: 'Goods'
-      // },
-      // {
-      //   title: '周报',
-      //   path: '/weeklyreport',
-      //   icon: 'DataAnalysis'
-      // }
     ]
   },
   getters: {

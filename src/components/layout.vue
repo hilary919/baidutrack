@@ -82,7 +82,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ArrowDown, Fold, Expand, HomeFilled, View, Location, Goods, DataAnalysis } from "@element-plus/icons-vue";
+import { ArrowDown, Fold, Expand, HomeFilled, View, Location } from "@element-plus/icons-vue";
 import { ref, onMounted, watch } from "vue";
 import store from "@/store";
 import router from "@/router";
