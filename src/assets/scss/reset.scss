@@ -1,0 +1,253 @@
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+textarea {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+  height: 100%;
+  font-family: '微软雅黑';
+  // overflow: hidden;
+  /* background:#1C232B; */
+  /* color:#fff; */
+}
+
+html {
+  /*font-size:100px;*/
+  height: 100%;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+.el-message {
+  top: 0px !important;
+}
+
+button {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-user-select: none;
+  -moz-user-focus: none;
+  -moz-user-select: none;
+}
+
+/*去除mapview拖动时的边框*/
+.esri-view .esri-view-surface--inset-outline:focus::after {
+  outline: auto 0px Highlight !important;
+  outline: auto 0px -webkit-focus-ring-color !important;
+}
+.table-search {
+  .table-search-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .long-time-search {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .flex-box {
+      .label {
+        text-align: left;
+      }
+      > span {
+        display: none;
+      }
+      margin-bottom: 0;
+    }
+    .el-select,
+    .el-input,
+    .el-date-editor {
+      width: 163px !important;
+    }
+    .long-RDC-select {
+      .el-input {
+        width: 402px !important;
+      }
+      width: 402px !important;
+    }
+    .el-date-editor--daterange {
+      width: 300px !important;
+    }
+    .el-date-editor--datetimerange.el-range-editor--mini {
+      width: 340px !important;
+    }
+    .device-submit-reason {
+      textarea,
+      .el-input {
+        width: 230px !important;
+      }
+    }
+    .autocomplete {
+      .el-input {
+        width: 250px !important;
+      }
+      width: 250px !important;
+    }
+  }
+  .table-search-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+    .search-btn-content {
+      margin: 0;
+    }
+  }
+}
+.el-table .cell {
+  font-size: 13px !important;
+}
