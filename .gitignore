@@ -25,3 +25,6 @@ npminstall-debug.log*
 
 # Claude Code
 .claude/
+
+# Build artifacts
+dist.zip
