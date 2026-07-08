@@ -101,8 +101,6 @@ const iconMap: Record<string, any> = {
   HomeFilled,
   View,
   Location,
-  Goods,
-  DataAnalysis,
 };
 
 const getSiteList = () => {

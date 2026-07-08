@@ -22,7 +22,7 @@
         </el-form-item>
       </el-form>
       <div class="btn-login">
-        <el-button type="primary" size="large" @click="submitForm(loginForm)"
+        <el-button type="primary" style="width: 120px"  @click="submitForm(loginForm)"
           >登录</el-button
         >
       </div>
@@ -76,7 +76,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(206, 231, 241, 0.5);
     border-radius: 20px;
     padding: 30px;
     font-size: 24px;
