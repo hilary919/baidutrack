@@ -215,7 +215,7 @@ onMounted(() => {
   }
   .el-main {
     padding: 0;
-    background: #f0f2f5;
+    background: #f5f6f8;
   }
   .toolbar {
     display: inline-flex;
