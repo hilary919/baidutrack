@@ -127,27 +127,26 @@ function navigateTo(path: string) {
 
 <style scoped lang="less">
 .dashboard {
-  padding: 28px 32px;
-  height: calc(100vh - 140px);
+  padding: 8px 0 24px;
+  height: calc(100vh - 120px);
   overflow-y: auto;
 }
-
 .welcome-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   h2 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
-    color: #303133;
-    margin: 0 0 6px;
+    color: #1a1a1a;
+    margin: 0 0 4px;
     text-align: left;
   }
   .subtitle {
     margin: 0;
     font-size: 14px;
-    color: #909399;
+    color: #999;
   }
   .date-badge {
     padding: 6px 16px;
@@ -159,97 +158,44 @@ function navigateTo(path: string) {
     white-space: nowrap;
   }
 }
-
-.stats-row {
-  margin-bottom: 32px;
-}
-
+.stats-row { margin-bottom: 24px; }
 .stat-card {
   cursor: default;
-  :deep(.el-card__body) {
-    padding: 20px 24px;
-  }
-  &:hover {
-    transform: translateY(-2px);
-    transition: transform 0.25s;
-  }
+  border-radius: 8px;
+  :deep(.el-card__body) { padding: 20px 24px; }
+  &:hover { transform: translateY(-2px); transition: transform 0.25s; }
 }
-
-.stat-inner {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
+.stat-inner { display: flex; align-items: center; gap: 16px; }
 .stat-icon {
-  width: 48px;
-  height: 48px;
+  width: 48px; height: 48px;
   border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: #fff;
-  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: #fff; flex-shrink: 0;
   &.site-icon   { background: linear-gradient(135deg, #409eff, #337ecc); }
   &.report-icon { background: linear-gradient(135deg, #67c23a, #529b2e); }
   &.active-icon { background: linear-gradient(135deg, #e6a23c, #d48806); }
 }
-
 .stat-info {
-  display: flex;
-  flex-direction: column;
-  .stat-value {
-    font-size: 26px;
-    font-weight: 700;
-    color: #303133;
-    line-height: 1.2;
-  }
-  .stat-label {
-    font-size: 13px;
-    color: #909399;
-    margin-top: 2px;
-  }
+  display: flex; flex-direction: column;
+  .stat-value { font-size: 26px; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
+  .stat-label { font-size: 13px; color: #999; margin-top: 2px; }
 }
-
 .quick-section {
-  h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #303133;
-    margin: 0 0 16px;
-  }
+  h3 { font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 16px; }
 }
-
 .link-card {
-  cursor: pointer;
-  text-align: center;
+  cursor: pointer; text-align: center; border-radius: 8px;
   :deep(.el-card__body) {
-    padding: 24px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    padding: 28px 16px;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
   }
-  .el-icon {
-    color: #409eff;
-  }
-  .link-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: #303133;
-  }
-  .link-desc {
-    font-size: 12px;
-    color: #c0c4cc;
-  }
+  .el-icon { color: #409eff; }
+  .link-title { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+  .link-desc { font-size: 12px; color: #bbb; }
   &:hover {
-    border-color: #409eff;
-    transition: border-color 0.25s;
-    .el-icon {
-      transform: scale(1.15);
-      transition: transform 0.25s;
-    }
+    border-color: #409eff; box-shadow: 0 2px 12px rgba(64, 158, 255, 0.15);
+    transition: all 0.25s;
+    .el-icon { transform: scale(1.15); transition: transform 0.25s; }
   }
 }
 </style>

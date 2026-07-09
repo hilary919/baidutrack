@@ -1,6 +1,7 @@
 <template>
   <div class="login">
     <div class="login-container">
+      <h2>百度统计工具</h2>
       <el-form
         class="login-form"
         :model="form"
@@ -66,21 +67,29 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 </script>
 <style lang="scss" scoped>
 .login {
-  background: url("@/assets/images/loginbg.jpg");
-  background-size: cover;
+  background: url("@/assets/images/loginbg.jpg") center/cover;
   height: 100vh;
-  position: relative;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .login-container {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(206, 231, 241, 0.5);
-    border-radius: 20px;
-    padding: 30px;
-    font-size: 24px;
-    width: 400px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    padding: 40px 36px 32px;
+    width: 420px;
+    h2 {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 28px;
+    }
+  }
+  .btn-login {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
   }
 }
 </style>

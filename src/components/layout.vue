@@ -180,51 +180,74 @@ onMounted(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     padding: 0 20px;
     font-size: 18px;
-    border-bottom: 1px solid var(--el-border-color-light);
+    z-index: 10;
+    height: 56px;
   }
   .header-left {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     .collapse-btn {
-      font-size: 22px;
+      font-size: 20px;
       cursor: pointer;
-      color: #606266;
-      &:hover {
-        color: #409eff;
-      }
+      color: #666;
+      &:hover { color: #409eff; }
     }
     h1 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a1a1a;
       white-space: nowrap;
     }
   }
   .el-aside {
-    transition: width 0.3s;
+    transition: width 0.25s;
     overflow: hidden;
+    background: #fff;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
   }
   .el-menu {
     height: 100%;
+    border-right: none;
   }
   .el-main {
-    padding: 0;
+    padding: 16px;
+    background: #f0f2f5;
   }
   .toolbar {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    gap: 16px;
     height: 100%;
-    .el-dropdown{
-      padding: 0 20px;
-    }
+    font-size: 14px;
+    .el-dropdown { cursor: pointer; }
   }
   :deep(.el-container) {
-    height: calc(100vh - 60px);
+    height: calc(100vh - 56px);
   }
-  :deep(.el-tabs__content) {
-    padding: 0 20px;
+  :deep(.el-tabs) {
+    --el-tabs-header-height: 40px;
+    .el-tabs__header {
+      margin-bottom: 0;
+      background: #fff;
+      border-radius: 8px 8px 0 0;
+      padding: 4px 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .el-tabs__nav { border: none; }
+    .el-tabs__item {
+      height: 36px;
+      line-height: 36px;
+      font-size: 13px;
+      border-radius: 6px 6px 0 0;
+    }
+    .el-tabs__content {
+      padding: 0;
+    }
   }
 }
 </style>

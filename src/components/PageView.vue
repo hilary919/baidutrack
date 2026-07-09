@@ -1,29 +1,31 @@
 <template>
   <div class="container">
-    <el-form :inline="true" ref="form" label-width="80px">
-      <el-form-item label="统计日期">
-        <el-date-picker
-          v-model="date"
-          type="daterange"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-        />
-      </el-form-item>
-      <el-form-item label="url关键字">
-        <el-input v-model="filterKeyword" clearable> </el-input>
-      </el-form-item>
-      <el-form-item>
-        <MetricSelector :storage-key="metricsKey" :metrics="pageMetrics" @change="onMetricsChange" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSearch">查询</el-button>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="success" @click="exportData">导出</el-button>
-      </el-form-item>
-    </el-form>
-    <div class="result-container">
+    <div class="query-card">
+      <el-form :inline="true" ref="form" label-width="80px">
+        <el-form-item label="统计日期">
+          <el-date-picker
+            v-model="date"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+          />
+        </el-form-item>
+        <el-form-item label="url关键字">
+          <el-input v-model="filterKeyword" clearable placeholder="输入URL关键字过滤" />
+        </el-form-item>
+        <el-form-item>
+          <MetricSelector :storage-key="metricsKey" :metrics="pageMetrics" @change="onMetricsChange" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSearch">查询</el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="success" @click="exportData">导出</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="result-card">
       <ul class="result-show">
         <li v-for="(item, index) in searchItems" :key="index">
           {{ item.label }}
@@ -244,26 +246,57 @@ export default {
 </script>
 
 <style scoped lang="less">
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.query-card, .result-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  padding: 20px 24px;
+}
+.query-card {
+  :deep(.el-form) { margin-bottom: 0; }
+  :deep(.el-form-item) { margin-bottom: 0; }
+}
 .result-show {
   display: flex;
   justify-content: center;
-  padding: 24px 0;
+  flex-wrap: wrap;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 20px;
   li {
     list-style: none;
-    margin: 0 20px;
-    font-size: 30px;
+    margin: 8px 24px;
+    font-size: 14px;
+    color: #666;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    align-items: center;
+    gap: 8px;
     .count {
-      font-weight: bold;
-      color: burlywood;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a1a1a;
     }
   }
 }
 .pagination-wrap {
   display: flex;
-  justify-content: center;
-  margin: 24px 0 16px;
+  justify-content: flex-end;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+:deep(.el-table) {
+  --el-table-border-color: #f0f0f0;
+  .el-table__header th {
+    background: #fafafa;
+    font-weight: 600;
+    color: #333;
+  }
 }
 </style>

@@ -1,36 +1,38 @@
 <template>
   <div class="container">
-    <el-form :inline="true" ref="form" label-width="80px">
-      <el-form-item label="统计日期">
-        <el-date-picker
-          v-model="date"
-          type="daterange"
-          align="center"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          format="YYYY-MM-DD"
-          value-format="YYYYMMDD"
-        >
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="统计维度">
-        <el-radio-group v-model="viewMode" @change="onViewModeChange">
-          <el-radio-button label="province">按省份</el-radio-button>
-          <el-radio-button label="city">按城市</el-radio-button>
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item>
-        <MetricSelector storage-key="district" :metrics="districtMetrics" @change="onMetricsChange" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSearch">查询</el-button>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="success" @click="exportData">导出</el-button>
-      </el-form-item>
-    </el-form>
-    <div class="result-container">
+    <div class="query-card">
+      <el-form :inline="true" ref="form" label-width="80px">
+        <el-form-item label="统计日期">
+          <el-date-picker
+            v-model="date"
+            type="daterange"
+            align="center"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            format="YYYY-MM-DD"
+            value-format="YYYYMMDD"
+          >
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="统计维度">
+          <el-radio-group v-model="viewMode" @change="onViewModeChange">
+            <el-radio-button label="province">按省份</el-radio-button>
+            <el-radio-button label="city">按城市</el-radio-button>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item>
+          <MetricSelector storage-key="district" :metrics="districtMetrics" @change="onMetricsChange" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSearch">查询</el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="success" @click="exportData">导出</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="result-card">
       <ul class="result-show">
         <li v-for="(item, index) in searchItems" :key="index">
           {{ item.label }}
@@ -240,22 +242,48 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.query-card, .result-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  padding: 20px 24px;
+}
+.query-card :deep(.el-form-item) { margin-bottom: 0; }
 .result-show {
   display: flex;
   justify-content: center;
-  padding: 24px 0;
+  flex-wrap: wrap;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 20px;
+  li {
+    list-style: none;
+    margin: 8px 24px;
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .count {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
 }
-.result-show li {
-  list-style: none;
-  margin: 0 20px;
-  font-size: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.result-show li .count {
-  font-weight: bold;
-  color: burlywood;
+:deep(.el-table) {
+  --el-table-border-color: #f0f0f0;
+  .el-table__header th {
+    background: #fafafa;
+    font-weight: 600;
+    color: #333;
+  }
 }
 </style>
