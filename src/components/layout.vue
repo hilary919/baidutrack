@@ -215,7 +215,7 @@ onMounted(() => {
     border-right: none;
   }
   .el-main {
-    padding: 16px;
+    padding: 0;
     background: #f0f2f5;
   }
   .toolbar {
@@ -231,22 +231,32 @@ onMounted(() => {
   }
   :deep(.el-tabs) {
     --el-tabs-header-height: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     .el-tabs__header {
-      margin-bottom: 0;
+      margin: 0;
       background: #fff;
-      border-radius: 8px 8px 0 0;
-      padding: 4px 12px 0;
-      border-bottom: 1px solid #eee;
+      padding: 0;
+      border-bottom: 1px solid #e8e8e8;
+      flex-shrink: 0;
+    }
+    .el-tabs__nav-wrap {
+      padding: 0 16px;
+      &::after { display: none; }
     }
     .el-tabs__nav { border: none; }
     .el-tabs__item {
-      height: 36px;
-      line-height: 36px;
+      height: 40px;
+      line-height: 40px;
       font-size: 13px;
-      border-radius: 6px 6px 0 0;
+      color: #666;
+      &.is-active { color: #409eff; font-weight: 600; }
     }
     .el-tabs__content {
-      padding: 0;
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
     }
   }
 }

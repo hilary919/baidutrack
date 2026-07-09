@@ -3,13 +3,15 @@ module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false,
   assetsDir: 'asset',
+  css: {
+    extract: {
+      filename: 'asset/css/[name].[contenthash:8].css',
+      chunkFilename: 'asset/css/[name].[contenthash:8].css',
+    },
+  },
   chainWebpack: (config) => {
     config.output.filename('asset/js/[name].[contenthash:8].js')
     config.output.chunkFilename('asset/js/[name].[contenthash:8].js')
-    config.plugin('extract-css').tap((args) => [{
-      filename: 'asset/css/[name].[contenthash:8].css',
-      chunkFilename: 'asset/css/[name].[contenthash:8].css',
-    }])
   },
   devServer: {
     client: {

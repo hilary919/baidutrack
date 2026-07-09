@@ -127,9 +127,7 @@ function navigateTo(path: string) {
 
 <style scoped lang="less">
 .dashboard {
-  padding: 8px 0 24px;
-  height: calc(100vh - 120px);
-  overflow-y: auto;
+  padding: 4px 0 0;
 }
 .welcome-section {
   display: flex;
