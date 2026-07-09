@@ -59,7 +59,6 @@
       </el-aside>
       <el-main>
         <el-tabs
-          type="card"
           v-model="active_name"
           @tab-click="tabClick"
           @tab-remove="tabRemove"
@@ -230,32 +229,42 @@ onMounted(() => {
     height: calc(100vh - 56px);
   }
   :deep(.el-tabs) {
-    --el-tabs-header-height: 40px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     .el-tabs__header {
       margin: 0;
       background: #fff;
       padding: 0;
-      border-bottom: 1px solid #e8e8e8;
-      flex-shrink: 0;
+      border-bottom: 1px solid #f0f0f0;
     }
     .el-tabs__nav-wrap {
-      padding: 0 16px;
+      padding: 0 20px;
       &::after { display: none; }
     }
-    .el-tabs__nav { border: none; }
+    .el-tabs__nav { border: none !important; }
     .el-tabs__item {
-      height: 40px;
-      line-height: 40px;
+      height: 44px;
+      line-height: 44px;
       font-size: 13px;
-      color: #666;
-      &.is-active { color: #409eff; font-weight: 600; }
+      color: #888;
+      border: none !important;
+      padding: 0 16px !important;
+      position: relative;
+      &.is-active {
+        color: #1a1a1a;
+        font-weight: 600;
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 12px;
+          right: 12px;
+          height: 2px;
+          background: #409eff;
+          border-radius: 1px 1px 0 0;
+        }
+      }
+      &:hover { color: #409eff; }
     }
     .el-tabs__content {
-      flex: 1;
-      overflow-y: auto;
       padding: 16px;
     }
   }
