@@ -29,7 +29,7 @@
       <ul class="result-show">
         <li v-for="(item, index) in searchItems" :key="index">
           {{ item.label }}
-          <span class="count">{{ item.value }}</span>
+          <span class="count">{{ fmtVal(item.name, item.value) }}</span>
         </li>
       </ul>
       <ul v-if="filterKeyword" class="result-show">
@@ -70,7 +70,7 @@ import dayjs from "dayjs";
 import store from "@/store";
 import api from "@/http/api";
 import { exportExcel } from "@/utils/export";
-import { loadMetrics, VISITED_PAGE_METRICS } from "@/utils/metrics";
+import { loadMetrics, VISITED_PAGE_METRICS, formatMetricValue } from "@/utils/metrics";
 import MetricSelector from "@/components/MetricSelector.vue";
 export default {
   name: "PageView",
@@ -138,6 +138,9 @@ export default {
     // that.getData();
   },
   methods: {
+    fmtVal(name, val) {
+      return formatMetricValue(name, val);
+    },
     getMetricLabel(name) {
       const m = this.pageMetrics.find(item => item.name === name);
       return m ? m.label : '';

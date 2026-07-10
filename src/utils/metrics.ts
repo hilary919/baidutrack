@@ -18,6 +18,18 @@ export function loadMetrics(key: string, available: MetricItem[]): MetricItem[] 
   return available.filter(m => DEFAULT_METRICS.includes(m.name))
 }
 
+export function formatMetricValue(name: string, val: any): string {
+  const n = Number(val) || 0
+  if (name.includes('ratio')) return n.toFixed(1) + '%'
+  if (name === 'average_stay_time' || name === 'avg_visit_time') {
+    const m = Math.floor(n / 60)
+    const s = Math.round(n % 60)
+    return m > 0 ? `${m}分${s}秒` : `${s}秒`
+  }
+  if (name === 'avg_visit_pages') return n.toFixed(1)
+  return n.toLocaleString('zh-CN')
+}
+
 export function saveMetrics(key: string, metrics: MetricItem[]) {
   const names = metrics.map(m => m.name)
   localStorage.setItem(`metrics_${key}`, JSON.stringify(names))

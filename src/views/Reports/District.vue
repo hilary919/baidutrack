@@ -36,7 +36,7 @@
       <ul class="result-show">
         <li v-for="(item, index) in searchItems" :key="index">
           {{ item.label }}
-          <span class="count">{{ item.value }}</span>
+          <span class="count">{{ fmtVal(item.name, item.value) }}</span>
         </li>
         <template v-for="(count, key) in filterData">
           <li v-if="count !== 0" :key="key">
@@ -74,7 +74,7 @@
 <script>
 import dayjs from "dayjs";
 import { exportExcel } from "@/utils/export";
-import { loadMetrics, DISTRICT_METRICS } from "@/utils/metrics";
+import { loadMetrics, DISTRICT_METRICS, formatMetricValue } from "@/utils/metrics";
 import store from "@/store";
 import api from "@/http/api";
 import MetricSelector from "@/components/MetricSelector.vue";
@@ -120,6 +120,9 @@ export default {
     this.json_fields = { 城市: "area", ..._json };
   },
   methods: {
+    fmtVal(name, val) {
+      return formatMetricValue(name, val);
+    },
     onMetricsChange(metrics) {
       this.searchItems = metrics.map(m => ({ ...m }));
     },

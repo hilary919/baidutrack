@@ -23,6 +23,11 @@ export default createStore({
         path: '/district',
         icon: 'Location'
       },
+      {
+        title: '数据对比',
+        path: '/comparison',
+        icon: 'DataAnalysis'
+      },
     ]
   },
   getters: {

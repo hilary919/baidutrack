@@ -42,6 +42,14 @@ const routes: Array<RouteRecordRaw> = [
           title: '区域分布'
         }
       },
+      {
+        path: '/comparison',
+        name: 'comparison',
+        component: () => import('../views/Reports/Comparison.vue'),
+        meta: {
+          title: '数据对比'
+        }
+      },
     ]
   },
 ]

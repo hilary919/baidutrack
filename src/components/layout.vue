@@ -81,7 +81,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ArrowDown, Fold, Expand, HomeFilled, View, Location } from "@element-plus/icons-vue";
+import { ArrowDown, Fold, Expand, HomeFilled, View, Location, DataAnalysis } from "@element-plus/icons-vue";
 import { ref, onMounted, watch } from "vue";
 import store from "@/store";
 import router from "@/router";
@@ -100,6 +100,7 @@ const iconMap: Record<string, any> = {
   HomeFilled,
   View,
   Location,
+  DataAnalysis,
 };
 
 const getSiteList = () => {
@@ -180,7 +181,8 @@ onMounted(() => {
     justify-content: space-between;
     align-items: center;
     background: #fff;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #ebeef5;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
     padding: 0 20px;
     font-size: 18px;
     z-index: 10;
