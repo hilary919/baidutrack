@@ -68,6 +68,7 @@ import dayjs from 'dayjs'
 import store from '@/store'
 import api from '@/http/api'
 import { VISITED_PAGE_METRICS } from '@/utils/metrics'
+import { ElMessage } from 'element-plus'
 import { CaretTop, CaretBottom, Minus } from '@element-plus/icons-vue'
 
 function isPctMetric(name) {
@@ -128,7 +129,8 @@ export default {
       const base = { site_id: siteId, metrics, method: 'visit/toppage/a', start_index: 0, max_results: 1 }
       const a = this.compareMode === 'custom' ? this.customA : this.periodA
       const b = this.compareMode === 'custom' ? this.customB : this.periodB
-      if (!a[0] || !b[0]) { this.loading = false; return }
+      if (!a[0] || !a[1]) { ElMessage.warning('请选择当期日期范围'); this.loading = false; return }
+      if (!b[0] || !b[1]) { ElMessage.warning('请选择对比期日期范围'); this.loading = false; return }
       const pA = { ...base, start_date: a[0], end_date: a[1] }
       const pB = { ...base, start_date: b[0], end_date: b[1] }
 
