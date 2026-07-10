@@ -70,6 +70,11 @@ router.beforeEach((to, from, next) => {
       }
       next()
     } else {
+      // 保存 URL 中的 site 参数到 localStorage，登录后恢复
+      const siteParam = to.query.site as string
+      if (siteParam) {
+        localStorage.setItem('allowedSiteId', siteParam)
+      }
       next('/login')
     }
   }

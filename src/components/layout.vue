@@ -9,7 +9,8 @@
         <h1>百度统计工具</h1>
       </div>
       <div class="toolbar">
-        <el-dropdown @command="changeSite">
+        <span v-if="lockedSite" class="site-fixed">{{ curSite.domain }}</span>
+        <el-dropdown v-else @command="changeSite">
           <span class="el-dropdown-link">
             {{ curSite.domain
             }}<el-icon class="el-icon--right"><arrow-down /></el-icon>
@@ -88,9 +89,12 @@ import router from "@/router";
 import api from "@/http/api";
 import { useRoute } from "vue-router";
 
+const SITE_LOCK_KEY = 'allowedSiteId'
+
 const siteList = ref([]);
 const curSite = ref({});
 const userName = ref("");
+const lockedSite = ref(false);
 const isCollapse = ref(false);
 const menuActive = ref("/home");
 const active_name = ref("/home");
@@ -106,8 +110,32 @@ const iconMap: Record<string, any> = {
 const getSiteList = () => {
   api.getSiteList().then((res) => {
     if (res) {
-      siteList.value = res.body.data[0].list;
-      curSite.value = siteList.value[0];
+      const list = res.body.data[0].list;
+      siteList.value = list;
+
+      // URL参数 ?site=xxx 优先，其次 localStorage
+      const urlSite = route.query.site as string
+      const storedSite = localStorage.getItem(SITE_LOCK_KEY)
+      const allowedSiteId = urlSite || storedSite
+
+      if (allowedSiteId) {
+        const found = list.find((s) => String(s.site_id) === String(allowedSiteId))
+        if (found) {
+          curSite.value = found
+          lockedSite.value = true
+          if (urlSite) {
+            localStorage.setItem(SITE_LOCK_KEY, String(found.site_id))
+          }
+        } else {
+          // 未找到匹配站点，取第一个并清除锁定
+          curSite.value = list[0]
+          lockedSite.value = false
+          localStorage.removeItem(SITE_LOCK_KEY)
+        }
+      } else {
+        curSite.value = list[0]
+        lockedSite.value = false
+      }
       store.commit("setSite", curSite.value);
     }
   });
@@ -226,6 +254,9 @@ onMounted(() => {
     height: 100%;
     font-size: 14px;
     .el-dropdown { cursor: pointer; }
+    .site-fixed {
+      color: #333; font-weight: 500;
+    }
   }
   :deep(.el-container) {
     height: calc(100vh - 56px);
